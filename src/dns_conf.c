@@ -944,6 +944,7 @@ static int _config_server(int argc, char *argv[], dns_server_type_t type, int de
 		{"tls-host-verify", required_argument, NULL, 262 }, /* verify tls hostname */
 		{"tcp-keepalive", required_argument, NULL, 263}, /* tcp keepalive */
 		{"subnet-all-query-types", no_argument, NULL, 264}, /* send subnent for all query types.*/
+		{"fallback", no_argument, NULL, 265}, /* fallback */
 		{NULL, no_argument, NULL, 0}
 	};
 	/* clang-format on */
@@ -1113,6 +1114,10 @@ static int _config_server(int argc, char *argv[], dns_server_type_t type, int de
 		}
 		case 264: {
 			server->subnet_all_query_types = 1;
+			break;
+		}
+		case 265: {
+			server->fallback = 1;
 			break;
 		}
 		default:
